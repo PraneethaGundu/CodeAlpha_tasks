@@ -5,7 +5,7 @@ Each project demonstrates practical implementation of full-stack web development
 
 ---
 
-## 📂 Repository Structure
+## Repository Structure
 
 ```bash
 CodeAlpha_tasks/
@@ -16,7 +16,7 @@ CodeAlpha_tasks/
 
 ---
 
-## 🚀 Projects Included
+## Projects Included
 
 ### 1. CodeAlpha_EcommerceStore
 
@@ -81,7 +81,7 @@ A full-stack **Social Media Platform** that allows users to interact through pos
 
 ---
 
-## 🛠️ Common Technologies Used
+##  Common Technologies Used
 
 Across these projects, the following technologies were used:
 
@@ -95,7 +95,7 @@ Across these projects, the following technologies were used:
 
 ---
 
-## 🎯 Internship Purpose
+## Internship Purpose
 
 These projects were developed as part of the **CodeAlpha Internship Program** to strengthen practical knowledge in:
 
@@ -107,7 +107,7 @@ These projects were developed as part of the **CodeAlpha Internship Program** to
 
 ---
 
-## ▶️ How to Run the Projects
+##  How to Run the Projects
 
 Each project contains its own source code and setup.
 To run any project locally:
@@ -134,14 +134,15 @@ To run any project locally:
 
 ---
 
-## 👩‍💻 Author
+##  Author
 
 **Gundu Praneetha**
-Computer Science Student | Full Stack Development Enthusiast
+
+Computer Science Student | Full Stack Development Enthusiast | AI ML Student
 
 ---
 
-## 📌 Note
+## Note
 
 This repository is created for organizing and submitting all tasks completed during the **CodeAlpha Internship** in a single place.
 
