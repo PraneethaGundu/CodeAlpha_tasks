@@ -1,4 +1,4 @@
-# 🚀 ProjectHub - Real-Time Project Management System
+# ProjectHub - Real-Time Project Management System
 
 A full-stack Project Management System built using the MERN Stack (MongoDB, Express.js, React.js, Node.js) with real-time task updates using Socket.IO.
 
@@ -6,9 +6,9 @@ This application helps teams manage projects, assign tasks, collaborate through 
 
 ---
 
-## 📌 Features
+## Features
 
-### 🔐 Authentication & Authorization
+### Authentication & Authorization
 
 * User Registration
 * User Login
@@ -16,7 +16,7 @@ This application helps teams manage projects, assign tasks, collaborate through 
 * Protected Routes
 * Secure API Access
 
-### 📁 Project Management
+### Project Management
 
 * Create Projects
 * View Projects
@@ -24,7 +24,7 @@ This application helps teams manage projects, assign tasks, collaborate through 
 * Search Projects
 * Add Team Members to Projects
 
-### ✅ Task Management
+### Task Management
 
 * Create Tasks
 * Delete Tasks
@@ -37,19 +37,19 @@ This application helps teams manage projects, assign tasks, collaborate through 
   * In Progress
   * Done
 
-### 💬 Collaboration
+###  Collaboration
 
 * Task Comments
 * Real-Time Task Updates
 * Team Collaboration
 
-### 🔔 Notifications
+### Notifications
 
 * Task Assignment Notifications
 * Notification Center
 * User-Specific Alerts
 
-### 📊 Dashboard
+### Dashboard
 
 * Total Projects
 * Total Tasks
@@ -57,7 +57,7 @@ This application helps teams manage projects, assign tasks, collaborate through 
 * Pending Tasks
 * Sidebar Navigation
 
-### ⚡ Real-Time Features
+### Real-Time Features
 
 * Socket.IO Integration
 * Real-Time Task Creation
@@ -66,7 +66,7 @@ This application helps teams manage projects, assign tasks, collaborate through 
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -92,7 +92,7 @@ This application helps teams manage projects, assign tasks, collaborate through 
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 projecthub/
 
@@ -134,17 +134,9 @@ projecthub/
 
 ---
 
-## ⚙️ Installation
+## Installation
 
-### 1️⃣ Clone Repository
-
-```bash
-git clone https://github.com/YOUR_USERNAME/projecthub.git
-
-cd projecthub
-```
-
-### 2️⃣ Backend Setup
+###  Backend Setup
 
 ```bash
 cd backend
@@ -168,7 +160,7 @@ Start Backend:
 npm run dev
 ```
 
-### 3️⃣ Frontend Setup
+###  Frontend Setup
 
 ```bash
 cd frontend
@@ -196,7 +188,7 @@ http://localhost:5000
 
 ---
 
-## 🔑 API Endpoints
+##  API Endpoints
 
 ### Authentication
 
@@ -238,9 +230,8 @@ GET  /api/comments/:taskId
 
 ---
 
-## 🎯 Future Enhancements
+##  Future Enhancements
 
-* Dark Mode
 * Task Priority Levels
 * Project Progress Bar
 * User Profile Page
@@ -252,18 +243,18 @@ GET  /api/comments/:taskId
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
 **Gundu Praneetha**
 
 Computer Science Student
 
-📧 Email: [praneetha1435@gmail.com](mailto:praneetha1435@gmail.com)
+Email: [praneetha1435@gmail.com]
 
-🔗 GitHub: https://github.com/PraneethaGundu
+GitHub: https://github.com/PraneethaGundu
 
 ---
 
-## ⭐ Support
+## Support
 
 If you found this project useful, please consider giving it a ⭐ on GitHub.
