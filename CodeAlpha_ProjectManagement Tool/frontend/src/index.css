@@ -1,0 +1,137 @@
+body {
+  background: #f5f7fb;
+  font-family: "Segoe UI", sans-serif;
+  color: #111827;
+}
+
+/* CARD SYSTEM */
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 15px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  margin-bottom: 15px;
+}
+
+/* INPUT SYSTEM */
+input, select {
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  outline: none;
+}
+
+/* BUTTON SYSTEM */
+button {
+  background: #2563eb;
+  color: white;
+  border: none;
+  padding: 10px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #1d4ed8;
+}
+
+/* PAGE TITLE */
+.page-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: 250px;
+  background: #1e293b;
+  color: white;
+  padding: 20px;
+}
+
+.sidebar h2 {
+  color: white;
+  margin-bottom: 30px;
+}
+
+.sidebar button {
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.main-content {
+  flex: 1;
+}
+.card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transition: 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.15);
+}
+
+.card h3 {
+  color: #1e293b;
+  margin-bottom: 8px;
+}
+
+.card p {
+  color: #64748b;
+  margin-bottom: 15px;
+}
+
+.stat-card {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transition: 0.3s;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+}
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background: #1e3a8a;
+  color: white;
+  padding: 20px;
+}
+.main-content {
+  margin-left: 270px;
+  padding: 20px;
+}
+/* =========================
+   DARK MODE
+========================= */
+
+.dashboard-layout.dark .stat-card {
+  background: #1f2937 !important;
+  color: white !important;
+  border: 1px solid #374151;
+}
+
+.dashboard-layout.dark .stat-card h2,
+.dashboard-layout.dark .stat-card h3 {
+  color: #60a5fa !important;
+}
+
+.dashboard-layout.dark .stat-card p,
+.dashboard-layout.dark .stat-card h4 {
+  color: white !important;
+}
