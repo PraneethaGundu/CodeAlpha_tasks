@@ -100,11 +100,6 @@ CodeAlpha_SocialMediaPlatform
 
 ## Installation
 
-### Clone Repository
-
-```bash
-git clone https://github.com/PraneethaGundu/CodeAlpha_SocialMediaPlatform.git
-```
 
 ### Backend Setup
 
