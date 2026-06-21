@@ -4,34 +4,18 @@ import API from "../api/api";
 function CreatePost({ refreshPosts }) {
   const [content, setContent] = useState("");
   const [image, setImage] = useState(null);
-  const [preview, setPreview] = useState("");
   const [loading, setLoading] = useState(false);
-
-  const handleImageChange = (e) => {
-    const file = e.target.files[0];
-
-    if (!file) return;
-
-    setImage(file);
-    setPreview(URL.createObjectURL(file));
-  };
-
-  const removeImage = () => {
-    setImage(null);
-    setPreview("");
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (!content.trim() && !image) {
-      alert("Please write something or choose an image");
+      alert("Please add text or an image");
       return;
     }
 
     try {
       setLoading(true);
-
       const token = localStorage.getItem("token");
 
       const formData = new FormData();
@@ -50,9 +34,10 @@ function CreatePost({ refreshPosts }) {
 
       setContent("");
       setImage(null);
-      setPreview("");
 
-      refreshPosts();
+      if (refreshPosts) {
+        refreshPosts();
+      }
 
       alert("Post created successfully");
     } catch (error) {
@@ -64,73 +49,32 @@ function CreatePost({ refreshPosts }) {
   };
 
   return (
-    <div className="card shadow border-0 mb-4" style={{ borderRadius: "16px" }}>
-      <div className="card-body p-4">
-        <h4 className="fw-bold mb-3">Create Post</h4>
-        <p className="text-muted mb-3">
-          Share your thoughts, updates, or an image with your followers.
-        </p>
+    <div className="card shadow-sm border-0">
+      <div className="card-body">
+        <h5 className="fw-bold mb-3">Create Post</h5>
 
         <form onSubmit={handleSubmit}>
-          {/* Post Content */}
           <textarea
             className="form-control mb-3"
-            rows="4"
+            rows="3"
             placeholder="What's on your mind?"
             value={content}
             onChange={(e) => setContent(e.target.value)}
-            style={{
-              borderRadius: "12px",
-              resize: "none",
-            }}
           />
 
-          {/* Image Upload */}
-          <label className="form-label fw-semibold">
-            Add an image (optional)
-          </label>
           <input
             type="file"
             className="form-control mb-3"
-            accept="image/*"
-            onChange={handleImageChange}
+            onChange={(e) => setImage(e.target.files[0])}
           />
 
-          {/* Image Preview */}
-          {preview && (
-            <div className="mb-3">
-              <img
-                src={preview}
-                alt="Preview"
-                className="img-fluid rounded shadow-sm mb-2"
-                style={{
-                  maxHeight: "300px",
-                  width: "100%",
-                  objectFit: "cover",
-                }}
-              />
-
-              <button
-                type="button"
-                className="btn btn-outline-danger btn-sm"
-                onClick={removeImage}
-              >
-                Remove Image
-              </button>
-            </div>
-          )}
-
-          {/* Submit Button */}
-          <div className="d-flex justify-content-end">
-            <button
-              type="submit"
-              className="btn btn-primary px-4"
-              disabled={loading}
-              style={{ borderRadius: "10px" }}
-            >
-              {loading ? "Posting..." : "Post"}
-            </button>
-          </div>
+          <button
+            type="submit"
+            className="btn btn-primary"
+            disabled={loading}
+          >
+            {loading ? "Posting..." : "Post"}
+          </button>
         </form>
       </div>
     </div>
