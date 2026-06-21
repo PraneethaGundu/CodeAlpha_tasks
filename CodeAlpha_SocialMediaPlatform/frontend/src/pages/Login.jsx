@@ -8,8 +8,10 @@ function Login() {
     password: "",
   });
 
-  const [loading, setLoading] =
+  const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] =
     useState(false);
+  const [error, setError] = useState("");
 
   const navigate = useNavigate();
 
@@ -18,12 +20,15 @@ function Login() {
       ...form,
       [e.target.name]: e.target.value,
     });
+
+    setError("");
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     setLoading(true);
+    setError("");
 
     try {
       const res = await API.post(
@@ -37,11 +42,13 @@ function Login() {
       );
 
       alert("Login Successful");
-
       navigate("/home");
     } catch (error) {
-      alert("Login Failed");
       console.log(error);
+      setError(
+        error.response?.data?.message ||
+          "Login failed. Please check your credentials."
+      );
     } finally {
       setLoading(false);
     }
@@ -57,30 +64,49 @@ function Login() {
       }}
     >
       <div className="row justify-content-center align-items-center min-vh-100">
-        <div className="col-md-5 col-lg-4">
+        <div className="col-md-6 col-lg-4">
           <div
             className="card shadow-lg border-0"
             style={{
               borderRadius: "20px",
             }}
           >
-            <div className="card-body p-4">
+            <div className="card-body p-4 p-md-5">
+              {/* Header */}
               <div className="text-center mb-4">
-                <h1>🌐</h1>
+                <div
+                  className="d-inline-flex align-items-center justify-content-center rounded-circle bg-primary text-white mb-3"
+                  style={{
+                    width: "70px",
+                    height: "70px",
+                    fontSize: "30px",
+                  }}
+                >
+                  🌐
+                </div>
 
-                <h2 className="fw-bold">
+                <h2 className="fw-bold mb-1">
                   SocialConnect
                 </h2>
 
-                <p className="text-muted">
-                  Welcome Back
+                <p className="text-muted mb-0">
+                  Welcome back! Login to continue
                 </p>
               </div>
 
+              {/* Error Message */}
+              {error && (
+                <div className="alert alert-danger py-2">
+                  {error}
+                </div>
+              )}
+
+              {/* Form */}
               <form onSubmit={handleSubmit}>
+                {/* Email */}
                 <div className="mb-3">
-                  <label className="form-label">
-                    Email
+                  <label className="form-label fw-semibold">
+                    Email Address
                   </label>
 
                   <input
@@ -94,25 +120,47 @@ function Login() {
                   />
                 </div>
 
-                <div className="mb-4">
-                  <label className="form-label">
+                {/* Password */}
+                <div className="mb-3">
+                  <label className="form-label fw-semibold">
                     Password
                   </label>
 
-                  <input
-                    type="password"
-                    name="password"
-                    value={form.password}
-                    onChange={handleChange}
-                    className="form-control"
-                    placeholder="Enter your password"
-                    required
-                  />
+                  <div className="input-group">
+                    <input
+                      type={
+                        showPassword
+                          ? "text"
+                          : "password"
+                      }
+                      name="password"
+                      value={form.password}
+                      onChange={handleChange}
+                      className="form-control"
+                      placeholder="Enter your password"
+                      required
+                    />
+
+                    <button
+                      type="button"
+                      className="btn btn-outline-secondary"
+                      onClick={() =>
+                        setShowPassword(
+                          !showPassword
+                        )
+                      }
+                    >
+                      {showPassword
+                        ? "Hide"
+                        : "Show"}
+                    </button>
+                  </div>
                 </div>
 
+                {/* Login Button */}
                 <button
                   type="submit"
-                  className="btn btn-primary w-100"
+                  className="btn btn-primary w-100 py-2 mt-2"
                   disabled={loading}
                 >
                   {loading
@@ -120,9 +168,10 @@ function Login() {
                     : "Login"}
                 </button>
 
+                {/* Register Button */}
                 <button
                   type="button"
-                  className="btn btn-outline-success w-100 mt-3"
+                  className="btn btn-outline-success w-100 mt-3 py-2"
                   onClick={() =>
                     navigate("/register")
                   }
@@ -131,9 +180,9 @@ function Login() {
                 </button>
               </form>
 
-              <hr />
+              <hr className="my-4" />
 
-              <p className="text-center text-muted mb-0">
+              <p className="text-center text-muted mb-0 small">
                 Connect • Share • Follow
               </p>
             </div>
