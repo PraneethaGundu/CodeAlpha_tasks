@@ -1,4 +1,4 @@
-# CodeAlpha Full Stack Development Internship Projects 🚀
+# CodeAlpha Full Stack Development Internship Projects 
 
 This repository contains the projects completed as part of my **CodeAlpha Full Stack Development Internship**.
 Each project demonstrates different full-stack development concepts such as **authentication, CRUD operations, REST APIs, MongoDB integration, UI design, and real-time features**.
@@ -151,7 +151,7 @@ npm run dev
 
 ---
 
-# 🎯Internship Learning Outcomes
+# Internship Learning Outcomes
 
 Through these projects, I improved my skills in:
 
@@ -166,14 +166,14 @@ Through these projects, I improved my skills in:
 
 ---
 
-# 🙏Acknowledgement
+# Acknowledgement
 
 I would like to thank **CodeAlpha** for providing me with the opportunity to work on these practical full-stack development projects.
 This internship helped me strengthen my understanding of real-world web application development and improve my problem-solving skills.
 
 ---
 
-# 📌 Author
+# Author
 
 **Gundu Praneetha**
 Full Stack Development Intern – CodeAlpha
