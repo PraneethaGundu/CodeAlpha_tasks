@@ -1,148 +1,285 @@
-# CodeAlpha Tasks
+# CodeAlpha Project Management Tool
 
-This repository contains the projects completed as part of my **CodeAlpha Internship**.
-Each project demonstrates practical implementation of full-stack web development concepts, including frontend design, backend development, database integration, and project structuring.
+A full-stack **Project Management Tool** built as part of the **CodeAlpha Internship Task 3**.
+This application allows users to register/login, create projects, add members, assign tasks, track progress through a project board, and communicate through task comments.
 
 ---
 
-## Repository Structure
+## Features
+
+### Authentication
+
+* User Registration
+* User Login
+* Protected routes using JWT authentication
+
+### Project Management
+
+* Create new projects
+* View all projects for the logged-in user
+* Group projects with project members
+* Project owner can add members to a project
+
+### Task Management
+
+* Create tasks inside a project
+* Assign tasks to specific project members
+* Task board with status columns:
+
+  * **Todo**
+  * **In Progress**
+  * **Done**
+* Due date support for tasks
+* Overdue task indication
+* User-specific task status update restriction
+
+  * Only the assigned user can change the status of their task
+
+### Task Communication
+
+* Comment section for each task
+* Team members can communicate inside tasks
+
+### Dashboard
+
+* Dashboard statistics for:
+
+  * Total projects
+  * Total tasks
+  * Completed tasks
+  * Pending tasks
+
+###  Bonus Features
+
+* Notifications when a task is assigned
+* Real-time task updates using **Socket.IO**
+* Dark mode UI support
+
+---
+
+## 🛠 Tech Stack
+
+### Frontend
+
+* React.js
+* Vite
+* CSS
+
+### Backend
+
+* Node.js
+* Express.js
+* MongoDB
+* Mongoose
+* JWT Authentication
+* Socket.IO
+
+---
+
+##  Project Structure
 
 ```bash
-CodeAlpha_tasks/
-├── CodeAlpha_EcommerceStore/
-├── CodeAlpha_ProjectManagement Tool/
-└── CodeAlpha_SocialMediaPlatform/
+CodeAlpha_ProjectManagementTool/
+│
+├── frontend/
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   └── package.json
+│
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── server.js
+│   └── package.json
+│
+└── README.md
 ```
 
 ---
 
-## Projects Included
+## Database Models
 
-### 1. CodeAlpha_EcommerceStore
+The application uses MongoDB with the following collections:
 
-A full-stack **E-commerce Store** web application developed to simulate an online shopping platform.
-
-#### Features
-
-* User authentication
-* Product listing and display
-* Add to cart functionality
-* Quantity increase/decrease in cart
-* Responsive frontend design
-* Backend API integration
-* Database connectivity for storing products/users
-
-#### Tech Stack
-
-* **Frontend:** React.js, HTML, CSS, JavaScript
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB
+* **Users**
+* **Projects**
+* **Tasks**
+* **Comments**
+* **Notifications**
 
 ---
 
-### 2. CodeAlpha_ProjectManagement Tool
+## ⚙️ Installation & Setup
 
-A **Project Management Tool** designed to help users organize and track project tasks efficiently.
 
-#### Features
+## Setup Backend
 
-* Create and manage tasks
-* Update task status
-* Track project/task progress
-* Organize work in a structured way
-* User-friendly interface
-* Backend integration for task handling
+Go to the backend folder:
 
-#### Tech Stack
+```bash
+cd backend
+```
 
-* **Frontend:** React.js, HTML, CSS, JavaScript
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB
+Install dependencies:
 
----
+```bash
+npm install
+```
 
-### 3. CodeAlpha_SocialMediaPlatform
+Create a `.env` file inside the backend folder and add:
 
-A full-stack **Social Media Platform** that allows users to interact through posts and user authentication.
+```env
+PORT=5000
+MONGO_URI=your_mongodb_connection_string
+JWT_SECRET=your_jwt_secret
+```
 
-#### Features
+Start backend server:
 
-* User registration and login
-* Create and view posts
-* Social feed functionality
-* Backend API for post and user management
-* Database storage for user and post information
-
-#### Tech Stack
-
-* **Frontend:** React.js, HTML, CSS, JavaScript
-* **Backend:** Node.js, Express.js
-* **Database:** MongoDB
+```bash
+npm run dev
+```
 
 ---
 
-##  Common Technologies Used
+## Setup Frontend
 
-Across these projects, the following technologies were used:
+Open a new terminal and go to the frontend folder:
 
-* **React.js**
-* **Node.js**
-* **Express.js**
-* **MongoDB**
-* **JavaScript**
-* **HTML**
-* **CSS**
+```bash
+cd frontend
+```
 
----
+Install dependencies:
 
-## Internship Purpose
+```bash
+npm install
+```
 
-These projects were developed as part of the **CodeAlpha Internship Program** to strengthen practical knowledge in:
+Start frontend:
 
-* Full-stack web development
-* REST API integration
-* Frontend and backend connectivity
-* Database handling using MongoDB
-* Building real-world project workflows
+```bash
+npm run dev
+```
 
 ---
 
-##  How to Run the Projects
+## How to Use
 
-Each project contains its own source code and setup.
-To run any project locally:
+### 1. Register / Login
 
-1. Open the required project folder
-2. Install dependencies:
+Create an account or log in with existing credentials.
 
-   ```bash
-   npm install
-   ```
-3. Start the frontend/backend as required:
+### 2. Create a Project
 
-   ```bash
-   npm start
-   ```
+Add a new project with project name and description.
 
-   or
+### 3. Add Members
 
-   ```bash
-   npm run dev
-   ```
+Project owner can add members to the project.
 
-> **Note:** Setup steps may vary slightly for each project depending on frontend/backend structure.
+### 4. Create Tasks
+
+Inside a project:
+
+* Enter task title
+* Assign it to a member
+* Add due date
+
+### 5. Track Tasks
+
+Tasks are displayed in a board format:
+
+* Todo
+* In Progress
+* Done
+
+### 6. Update Task Status
+
+Only the assigned user can change the task status.
+
+### 7. Comment on Tasks
+
+Users can communicate using the comment section inside each task.
+
+---
+
+## Screens / Modules Included
+
+* Login Page
+* Register Page
+* Dashboard
+* Project Section
+* Add Member Section
+* Task Board
+* Task Comments
+* Notifications
+
+---
+
+## Access Rules Implemented
+
+* Only authenticated users can access the app
+* Only project members can view project tasks
+* Only project owner can add members
+* Only assigned user can update their task status
+
+---
+
+##  UI Features
+
+* Clean dashboard layout
+* Stat cards for project insights
+* Kanban-style task board
+* Dark mode support
+* Responsive card-based UI
+
+---
+
+## Internship Task Coverage
+
+### Required Features Covered
+
+* Authentication system (login/signup)
+* Create group projects
+* Assign tasks to users
+* Project boards
+* Task cards
+* Comment and communicate within tasks
+
+### Database Used For
+
+* Users
+* Projects
+* Tasks
+* Comments
+
+### Bonus Features Implemented
+
+* Notifications
+* Real-time updates using WebSocket
 
 ---
 
 ##  Author
 
 **Gundu Praneetha**
+Computer Science Student
+CodeAlpha Internship Project
 
-Computer Science Student | Full Stack Development Enthusiast | AI ML Student
+GitHub: https://github.com/PraneethaGundu
 
 ---
 
-## Note
+##  Note
 
-This repository is created for organizing and submitting all tasks completed during the **CodeAlpha Internship** in a single place.
+This project was built as part of the **CodeAlpha Internship** to demonstrate full-stack web development skills including authentication, database design, task collaboration, and real-time project management features.
+
 
