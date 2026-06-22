@@ -1,5 +1,7 @@
 const Project = require("../models/Project");
 const Task = require("../models/Task");
+const User = require("../models/User");
+
 // CREATE PROJECT
 exports.createProject = async (req, res) => {
   try {
@@ -43,7 +45,7 @@ exports.getProjectById = async (req, res) => {
     }
 
     // access check
-    if (!project.members.some(m => m._id.toString() === req.user.id)) {
+    if (!project.members.some((m) => m._id.toString() === req.user.id)) {
       return res.status(403).json({ message: "Access denied" });
     }
 
@@ -53,10 +55,14 @@ exports.getProjectById = async (req, res) => {
   }
 };
 
-// ADD MEMBER (only owner)
+// ADD MEMBER BY EMAIL (only owner)
 exports.addMember = async (req, res) => {
   try {
-    const { userId } = req.body;
+    const { email } = req.body;
+
+    if (!email) {
+      return res.status(400).json({ message: "Email is required" });
+    }
 
     const project = await Project.findById(req.params.id);
 
@@ -68,13 +74,27 @@ exports.addMember = async (req, res) => {
       return res.status(403).json({ message: "Only owner can add members" });
     }
 
-    if (!project.members.includes(userId)) {
-      project.members.push(userId);
+    const user = await User.findOne({ email });
+
+    if (!user) {
+      return res.status(404).json({ message: "User not found with this email" });
     }
 
+    if (project.members.includes(user._id)) {
+      return res.status(400).json({ message: "User is already a project member" });
+    }
+
+    project.members.push(user._id);
     await project.save();
 
-    res.json(project);
+    const updatedProject = await Project.findById(project._id)
+      .populate("owner", "name email")
+      .populate("members", "name email");
+
+    res.json({
+      message: "Member added successfully",
+      project: updatedProject,
+    });
   } catch (err) {
     res.status(500).json({ message: err.message });
   }
@@ -103,17 +123,32 @@ exports.deleteProject = async (req, res) => {
 
 exports.getStats = async (req, res) => {
   try {
-    const projects = await Project.countDocuments({
+    // Projects where logged-in user is a member
+    const userProjects = await Project.find({
       members: { $in: [req.user.id] },
     });
 
-    const tasks = await Task.countDocuments();
+    const projectIds = userProjects.map(
+      (project) => project._id
+    );
+
+    // Count only tasks assigned to the logged-in user
+    const projects = userProjects.length;
+
+    const tasks = await Task.countDocuments({
+      project: { $in: projectIds },
+      assignedTo: req.user.id,
+    });
 
     const completed = await Task.countDocuments({
+      project: { $in: projectIds },
+      assignedTo: req.user.id,
       status: "done",
     });
 
     const pending = await Task.countDocuments({
+      project: { $in: projectIds },
+      assignedTo: req.user.id,
       status: { $ne: "done" },
     });
 
@@ -127,25 +162,5 @@ exports.getStats = async (req, res) => {
     res.status(500).json({
       message: err.message,
     });
-  }
-};
-
-const deleteProject = async (projectId) => {
-  const confirmDelete = window.confirm(
-    "Are you sure you want to delete this project?"
-  );
-
-  if (!confirmDelete) return;
-
-  try {
-    await API.delete(`/projects/${projectId}`);
-
-    fetchProjects();
-
-    if (selectedProject?._id === projectId) {
-      setSelectedProject(null);
-    }
-  } catch (err) {
-    console.error(err);
   }
 };

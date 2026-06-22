@@ -13,9 +13,6 @@ router.get("/", auth, projectController.getUserProjects);
 router.get("/stats/dashboard", auth, projectController.getStats);
 router.get("/:id", auth, projectController.getProjectById);
 
-// ADD MEMBER
-router.put("/:id/add-member", auth, projectController.addMember);
-
 // DELETE PROJECT
 router.delete("/:id", auth, projectController.deleteProject);
 router.put("/:id/add-member", auth, projectController.addMember);

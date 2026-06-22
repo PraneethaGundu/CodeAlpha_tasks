@@ -22,7 +22,6 @@ exports.createTask = async (req, res) => {
       });
     }
 
-    // Real-time event
     io.emit("taskCreated", task);
 
     res.status(201).json(task);
@@ -53,19 +52,35 @@ exports.updateTaskStatus = async (req, res) => {
   try {
     const io = req.app.get("io");
 
-    const task = await Task.findByIdAndUpdate(
-      req.params.id,
-      {
-        status: req.body.status,
-      },
-      {
-        new: true,
-      }
-    ).populate("assignedTo", "name email");
+    const task = await Task.findById(req.params.id);
 
-    io.emit("taskUpdated", task);
+    if (!task) {
+      return res.status(404).json({
+        message: "Task not found",
+      });
+    }
 
-    res.json(task);
+    // Only assigned user can update this task
+    if (
+      !task.assignedTo ||
+      task.assignedTo.toString() !== req.user.id
+    ) {
+      return res.status(403).json({
+        message: "Only assigned user can update this task",
+      });
+    }
+
+    task.status = req.body.status;
+    await task.save();
+
+    const updatedTask = await Task.findById(task._id).populate(
+      "assignedTo",
+      "name email"
+    );
+
+    io.emit("taskUpdated", updatedTask);
+
+    res.json(updatedTask);
   } catch (err) {
     res.status(500).json({
       message: err.message,
@@ -78,11 +93,30 @@ exports.deleteTask = async (req, res) => {
   try {
     const io = req.app.get("io");
 
-    const deletedTaskId = req.params.id;
+    const task = await Task.findById(req.params.id).populate("project");
 
-    await Task.findByIdAndDelete(deletedTaskId);
+    if (!task) {
+      return res.status(404).json({
+        message: "Task not found",
+      });
+    }
 
-    io.emit("taskDeleted", deletedTaskId);
+    const isOwner =
+      task.project.owner.toString() === req.user.id;
+
+    const isAssignedUser =
+      task.assignedTo &&
+      task.assignedTo.toString() === req.user.id;
+
+    if (!isOwner && !isAssignedUser) {
+      return res.status(403).json({
+        message: "Only project owner or assigned user can delete this task",
+      });
+    }
+
+    await Task.findByIdAndDelete(req.params.id);
+
+    io.emit("taskDeleted", req.params.id);
 
     res.json({
       message: "Task deleted successfully",
