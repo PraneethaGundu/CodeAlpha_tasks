@@ -1,269 +1,180 @@
-# CodeAlpha Project Management Tool
+# CodeAlpha Full Stack Development Internship Projects 🚀
 
-A full-stack **Project Management Tool** built as part of the **CodeAlpha Internship Task 3**.
-This application allows users to register/login, create projects, add members, assign tasks, track progress through a project board, and communicate through task comments.
+This repository contains the projects completed as part of my **CodeAlpha Full Stack Development Internship**.
+Each project demonstrates different full-stack development concepts such as **authentication, CRUD operations, REST APIs, MongoDB integration, UI design, and real-time features**.
 
----
+##  Intern Details
 
-## Features
-
-### Authentication
-
-* User Registration
-* User Login
-* Protected routes using JWT authentication
-
-### Project Management
-
-* Create new projects
-* View all projects for the logged-in user
-* Group projects with project members
-* Project owner can add members to a project
-
-### Task Management
-
-* Create tasks inside a project
-* Assign tasks to specific project members
-* Task board with status columns:
-
-  * **Todo**
-  * **In Progress**
-  * **Done**
-* Due date support for tasks
-* Overdue task indication
-* User-specific task status update restriction
-
-  * Only the assigned user can change the status of their task
-
-### Task Communication
-
-* Comment section for each task
-* Team members can communicate inside tasks
-
-### Dashboard
-
-* Dashboard statistics for:
-
-  * Total projects
-  * Total tasks
-  * Completed tasks
-  * Pending tasks
-
-###  Bonus Features
-
-* Notifications when a task is assigned
-* Real-time task updates using **Socket.IO**
-* Dark mode UI support
+**Name:** Gundu Praneetha
+**Role:** Full Stack Development Intern
+**Organization:** CodeAlpha
 
 ---
 
-## Tech Stack
+#  Projects Included
 
-### Frontend
+## 1️⃣ E-Commerce Store
 
-* React.js
-* Vite
-* CSS
+A full-stack e-commerce web application where users can browse products, add items to the cart, and place orders.
 
-### Backend
+### Features
 
-* Node.js
-* Express.js
-* MongoDB
-* Mongoose
-* JWT Authentication
-* Socket.IO
+* User authentication (Login / Register)
+* Product listing and product details
+* Search and filter products
+* Add to cart and manage cart quantity
+* Order placement workflow
+* Responsive UI
+
+### Tech Stack
+
+* **Frontend:** React.js
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB Atlas
 
 ---
 
-##  Project Structure
+## 2️⃣ Social Media Platform – SocialConnect
+
+A full-stack social media web application where users can create posts, upload images, like posts, comment, follow other users, and manage their profiles.
+
+### Features
+
+* User registration and login
+* JWT authentication
+* Create, edit, and delete posts
+* Upload post images
+* Like and comment system
+* User profile with bio and profile picture
+* Follow / unfollow users
+* Search users
+* View other user profiles
+* Protected routes
+
+### Tech Stack
+
+* **Frontend:** React.js
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB Atlas
+
+---
+
+## 3️⃣ Project Management Tool
+
+A full-stack project management application built for team collaboration, project organization, and task tracking.
+
+### Features
+
+* User registration and login
+* JWT authentication
+* Create group projects
+* Add project members
+* Assign tasks to users
+* Kanban-style task board
+* Task comments and communication
+* Dashboard statistics
+* Due dates for tasks
+* Protected routes
+* Dark mode UI
+* Notifications and real-time updates using Socket.IO
+
+### Tech Stack
+
+* **Frontend:** React.js
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB Atlas
+
+---
+
+#  Tech Stack Used Across Projects
+
+* **Frontend:** React.js, CSS
+* **Backend:** Node.js, Express.js
+* **Database:** MongoDB Atlas
+* **Authentication:** JWT
+* **Real-time Communication:** Socket.IO
+* **Version Control:** Git & GitHub
+
+---
+
+#  Repository Structure
 
 ```bash
-CodeAlpha_ProjectManagementTool/
+CodeAlpha_tasks/
 │
-├── frontend/
-│   ├── src/
-│   │   ├── api/
-│   │   ├── components/
-│   │   ├── pages/
-│   │   ├── App.jsx
-│   │   ├── main.jsx
-│   │   └── index.css
-│   └── package.json
-│
-├── backend/
-│   ├── controllers/
-│   ├── middleware/
-│   ├── models/
-│   ├── routes/
-│   ├── server.js
-│   └── package.json
-│
+├── CodeAlpha_EcommerceStore/
+├── CodeAlpha_SocialMediaPlatform/
+├── CodeAlpha_ProjectManagement Tool/
 └── README.md
 ```
 
 ---
 
-## Database Models
+#  How to Run the Projects
 
-The application uses MongoDB with the following collections:
+Each project contains its own **frontend** and **backend** setup.
 
-* **Users**
-* **Projects**
-* **Tasks**
-* **Comments**
-* **Notifications**
+## General Steps
 
----
+### 1. Clone the repository
 
-## Installation & Setup
+```bash
+git clone https://github.com/PraneethaGundu/CodeAlpha_tasks.git
+cd CodeAlpha_tasks
+```
 
+### 2. Open the project folder you want to run
 
-## Setup Backend
+Example:
 
-Go to the backend folder:
+```bash
+cd CodeAlpha_ProjectManagement\ Tool
+```
+
+### 3. Install backend dependencies
 
 ```bash
 cd backend
-```
-
-Install dependencies:
-
-```bash
 npm install
+npm start
 ```
 
-Create a `.env` file inside the backend folder and add:
+### 4. Install frontend dependencies
 
-```env
-PORT=5000
-MONGO_URI=your_mongodb_connection_string
-JWT_SECRET=your_jwt_secret
-```
-
-Start backend server:
-
-```bash
-npm run dev
-```
-
----
-
-## Setup Frontend
-
-Open a new terminal and go to the frontend folder:
+Open another terminal:
 
 ```bash
 cd frontend
-```
-
-Install dependencies:
-
-```bash
 npm install
-```
-
-Start frontend:
-
-```bash
 npm run dev
 ```
 
 ---
 
-## How to Use
+# 🎯Internship Learning Outcomes
 
-### 1. Register / Login
+Through these projects, I improved my skills in:
 
-Create an account or log in with existing credentials.
-
-### 2. Create a Project
-
-Add a new project with project name and description.
-
-### 3. Add Members
-
-Project owner can add members to the project.
-
-### 4. Create Tasks
-
-Inside a project:
-
-* Enter task title
-* Assign it to a member
-* Add due date
-
-### 5. Track Tasks
-
-Tasks are displayed in a board format:
-
-* Todo
-* In Progress
-* Done
-
-### 6. Update Task Status
-
-Only the assigned user can change the task status.
-
-### 7. Comment on Tasks
-
-Users can communicate using the comment section inside each task.
-
-## Access Rules Implemented
-
-* Only authenticated users can access the app
-* Only project members can view project tasks
-* Only assigned user can update their task status
+* Building full-stack MERN applications
+* Designing REST APIs
+* Implementing authentication and protected routes
+* Working with MongoDB and Mongoose
+* Managing state and frontend components in React
+* Creating responsive and user-friendly UIs
+* Implementing real-time features using Socket.IO
+* Structuring complete end-to-end web applications
 
 ---
 
-##  UI Features
+# 🙏Acknowledgement
 
-* Clean dashboard layout
-* Stat cards for project insights
-* Kanban-style task board
-* Dark mode support
-* Responsive card-based UI
+I would like to thank **CodeAlpha** for providing me with the opportunity to work on these practical full-stack development projects.
+This internship helped me strengthen my understanding of real-world web application development and improve my problem-solving skills.
 
 ---
 
-## Internship Task Coverage
-
-### Required Features Covered
-
-* Authentication system (login/signup)
-* Create group projects
-* Assign tasks to users
-* Project boards
-* Task cards
-* Comment and communicate within tasks
-
-### Database Used For
-
-* Users
-* Projects
-* Tasks
-* Comments
-
-### Bonus Features Implemented
-
-* Notifications
-* Real-time updates using WebSocket
-
----
-
-##  Author
+# 📌 Author
 
 **Gundu Praneetha**
-Computer Science Student
-CodeAlpha Internship Project
-
-GitHub: https://github.com/PraneethaGundu
-
----
-
-##  Note
-
-This project was built as part of the **CodeAlpha Internship** to demonstrate full-stack web development skills including authentication, database design, task collaboration, and real-time project management features.
-
+Full Stack Development Intern – CodeAlpha
 
