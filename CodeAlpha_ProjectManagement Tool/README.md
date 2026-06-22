@@ -1,68 +1,59 @@
-# ProjectHub - Real-Time Project Management System
+# CodeAlpha Project Management Tool
 
-A full-stack Project Management System built using the MERN Stack (MongoDB, Express.js, React.js, Node.js) with real-time task updates using Socket.IO.
-
-This application helps teams manage projects, assign tasks, collaborate through comments, track progress, and receive notifications in real time.
+A full-stack **Project Management Tool** built as part of the **CodeAlpha Internship Task 3**.
+This application allows users to register/login, create projects, add members, assign tasks, track progress through a project board, and communicate through task comments.
 
 ---
 
 ## Features
 
-### Authentication & Authorization
+### Authentication
 
 * User Registration
 * User Login
-* JWT Authentication
-* Protected Routes
-* Secure API Access
+* Protected routes using JWT authentication
 
 ### Project Management
 
-* Create Projects
-* View Projects
-* Delete Projects
-* Search Projects
-* Add Team Members to Projects
+* Create new projects
+* View all projects for the logged-in user
+* Group projects with project members
+* Project owner can add members to a project
 
 ### Task Management
 
-* Create Tasks
-* Delete Tasks
-* Assign Tasks to Team Members
-* Update Task Status
-* Due Date Management
-* Kanban Board Layout:
+* Create tasks inside a project
+* Assign tasks to specific project members
+* Task board with status columns:
 
-  * Todo
-  * In Progress
-  * Done
+  * **Todo**
+  * **In Progress**
+  * **Done**
+* Due date support for tasks
+* Overdue task indication
+* User-specific task status update restriction
 
-###  Collaboration
+  * Only the assigned user can change the status of their task
 
-* Task Comments
-* Real-Time Task Updates
-* Team Collaboration
+### Task Communication
 
-### Notifications
-
-* Task Assignment Notifications
-* Notification Center
-* User-Specific Alerts
+* Comment section for each task
+* Team members can communicate inside tasks
 
 ### Dashboard
 
-* Total Projects
-* Total Tasks
-* Completed Tasks
-* Pending Tasks
-* Sidebar Navigation
+* Dashboard statistics for:
 
-### Real-Time Features
+  * Total projects
+  * Total tasks
+  * Completed tasks
+  * Pending tasks
 
-* Socket.IO Integration
-* Real-Time Task Creation
-* Real-Time Task Updates
-* Real-Time Task Deletion
+###  Bonus Features
+
+* Notifications when a task is assigned
+* Real-time task updates using **Socket.IO**
+* Dark mode UI support
 
 ---
 
@@ -71,10 +62,8 @@ This application helps teams manage projects, assign tasks, collaborate through 
 ### Frontend
 
 * React.js
-* React Router DOM
-* Axios
-* Socket.IO Client
-* CSS3
+* Vite
+* CSS
 
 ### Backend
 
@@ -82,179 +71,198 @@ This application helps teams manage projects, assign tasks, collaborate through 
 * Express.js
 * MongoDB
 * Mongoose
-* Socket.IO
 * JWT Authentication
-* bcrypt.js
-
-### Database
-
-* MongoDB Atlas
+* Socket.IO
 
 ---
 
-## Project Structure
+##  Project Structure
 
-projecthub/
-
-├── backend/
-
-│ ├── controllers/
-
-│ ├── middleware/
-
-│ ├── models/
-
-│ ├── routes/
-
-│ ├── server.js
-
-│ └── .env
-
+```bash
+CodeAlpha_ProjectManagementTool/
 │
-
 ├── frontend/
-
-│ ├── src/
-
-│ │ ├── api/
-
-│ │ ├── components/
-
-│ │ ├── pages/
-
-│ │ ├── socket.js
-
-│ │ ├── App.jsx
-
-│ │ └── main.jsx
-
+│   ├── src/
+│   │   ├── api/
+│   │   ├── components/
+│   │   ├── pages/
+│   │   ├── App.jsx
+│   │   ├── main.jsx
+│   │   └── index.css
+│   └── package.json
 │
-
+├── backend/
+│   ├── controllers/
+│   ├── middleware/
+│   ├── models/
+│   ├── routes/
+│   ├── server.js
+│   └── package.json
+│
 └── README.md
+```
 
 ---
 
-## Installation
+## Database Models
 
-###  Backend Setup
+The application uses MongoDB with the following collections:
+
+* **Users**
+* **Projects**
+* **Tasks**
+* **Comments**
+* **Notifications**
+
+---
+
+## Installation & Setup
+
+
+## Setup Backend
+
+Go to the backend folder:
 
 ```bash
 cd backend
+```
 
+Install dependencies:
+
+```bash
 npm install
 ```
 
-Create `.env`
+Create a `.env` file inside the backend folder and add:
 
 ```env
 PORT=5000
-
 MONGO_URI=your_mongodb_connection_string
-
-JWT_SECRET=your_secret_key
+JWT_SECRET=your_jwt_secret
 ```
 
-Start Backend:
+Start backend server:
 
 ```bash
 npm run dev
 ```
 
-###  Frontend Setup
+---
+
+## Setup Frontend
+
+Open a new terminal and go to the frontend folder:
 
 ```bash
 cd frontend
+```
 
+Install dependencies:
+
+```bash
 npm install
 ```
 
-Start Frontend:
+Start frontend:
 
 ```bash
 npm run dev
 ```
 
-Frontend runs on:
+---
 
-```text
-http://localhost:5173
-```
+## How to Use
 
-Backend runs on:
+### 1. Register / Login
 
-```text
-http://localhost:5000
-```
+Create an account or log in with existing credentials.
+
+### 2. Create a Project
+
+Add a new project with project name and description.
+
+### 3. Add Members
+
+Project owner can add members to the project.
+
+### 4. Create Tasks
+
+Inside a project:
+
+* Enter task title
+* Assign it to a member
+* Add due date
+
+### 5. Track Tasks
+
+Tasks are displayed in a board format:
+
+* Todo
+* In Progress
+* Done
+
+### 6. Update Task Status
+
+Only the assigned user can change the task status.
+
+### 7. Comment on Tasks
+
+Users can communicate using the comment section inside each task.
+
+## Access Rules Implemented
+
+* Only authenticated users can access the app
+* Only project members can view project tasks
+* Only assigned user can update their task status
 
 ---
 
-##  API Endpoints
+##  UI Features
 
-### Authentication
-
-```http
-POST /api/auth/register
-POST /api/auth/login
-```
-
-### Projects
-
-```http
-GET    /api/projects
-POST   /api/projects
-DELETE /api/projects/:id
-PUT    /api/projects/:id/add-member
-```
-
-### Tasks
-
-```http
-GET    /api/tasks/:projectId
-POST   /api/tasks
-PUT    /api/tasks/:id
-DELETE /api/tasks/:id
-```
-
-### Notifications
-
-```http
-GET /api/notifications
-```
-
-### Comments
-
-```http
-POST /api/comments
-GET  /api/comments/:taskId
-```
+* Clean dashboard layout
+* Stat cards for project insights
+* Kanban-style task board
+* Dark mode support
+* Responsive card-based UI
 
 ---
 
-##  Future Enhancements
+## Internship Task Coverage
 
-* Task Priority Levels
-* Project Progress Bar
-* User Profile Page
-* Charts & Analytics
-* Activity Timeline
-* Drag & Drop Tasks
-* Email Notifications
-* Deployment on Vercel & Render
+### Required Features Covered
+
+* Authentication system (login/signup)
+* Create group projects
+* Assign tasks to users
+* Project boards
+* Task cards
+* Comment and communicate within tasks
+
+### Database Used For
+
+* Users
+* Projects
+* Tasks
+* Comments
+
+### Bonus Features Implemented
+
+* Notifications
+* Real-time updates using WebSocket
 
 ---
 
 ##  Author
 
 **Gundu Praneetha**
-
 Computer Science Student
-
-Email: [praneetha1435@gmail.com]
+CodeAlpha Internship Project
 
 GitHub: https://github.com/PraneethaGundu
 
 ---
 
-## Support
+##  Note
 
-If you found this project useful, please consider giving it a ⭐ on GitHub.
+This project was built as part of the **CodeAlpha Internship** to demonstrate full-stack web development skills including authentication, database design, task collaboration, and real-time project management features.
+
