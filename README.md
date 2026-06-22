@@ -57,7 +57,7 @@ This application allows users to register/login, create projects, add members, a
 
 ---
 
-## 🛠 Tech Stack
+## Tech Stack
 
 ### Frontend
 
@@ -116,7 +116,7 @@ The application uses MongoDB with the following collections:
 
 ---
 
-## ⚙️ Installation & Setup
+## Installation & Setup
 
 
 ## Setup Backend
@@ -209,26 +209,10 @@ Only the assigned user can change the task status.
 
 Users can communicate using the comment section inside each task.
 
----
-
-## Screens / Modules Included
-
-* Login Page
-* Register Page
-* Dashboard
-* Project Section
-* Add Member Section
-* Task Board
-* Task Comments
-* Notifications
-
----
-
 ## Access Rules Implemented
 
 * Only authenticated users can access the app
 * Only project members can view project tasks
-* Only project owner can add members
 * Only assigned user can update their task status
 
 ---
